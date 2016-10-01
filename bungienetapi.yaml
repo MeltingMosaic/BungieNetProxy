@@ -7,6 +7,7 @@ info:
 
 schemes: [https]
 
+basePath: /Platform
           
 definitions:
   PlayerSearchResponse:
@@ -22,15 +23,57 @@ definitions:
       iconPath:
         type: string
       membershipType:
-        type: integer
-        format: int32
-        description: XBL (1) or PSN (2)
+        $ref: "#/definitions/MembershipType"
       membershipId:
-        type: string
-        description: The Destiny Membership ID
+        $ref: "#/definitions/MembershipId"
       displayName:
         type: string
         
+  DestinyAccountResponse:
+    allOf:
+      - properties:
+          Response: 
+            $ref: "#/definitions/DestinyAccountResult"
+      - $ref: "#/definitions/BungieResponseBoilerplate"
+  
+  DestinyAccountResult:
+    properties:
+      data:
+        properties:
+          characters:
+            type: array
+            items: 
+              $ref: "#/definitions/Character"
+          grimoireScore:
+            type: integer
+          inventory:
+            type: array
+            items:
+              properties:
+                currencies:
+                  type: array
+                  items: 
+                    properties:
+                      itemHash:
+                        type: integer
+                      value:
+                        type: integer
+          membershipType: 
+            $ref: "#/definitions/MembershipType"
+          membershipId:
+            $ref: "#/definitions/MembershipId"
+          versions:
+            type: integer
+            
+  GetCharacterSummaryResponse:
+    allOf:
+      - properties:
+          Response:
+            properties:
+              data:
+                $ref: "#/definitions/Character"
+      - $ref: "#/definitions/BungieResponseBoilerplate"
+              
   BungieResponseBoilerplate:
     properties:
       ErrorCode:
@@ -44,13 +87,178 @@ definitions:
         type: string
       ThrottleSeconds:
         type: integer      
-            
+        
+  MembershipType:
+    type: integer
+    format: int32
+    description: XBL (1) or PSN (2)
+    enum: [1,2]
+
+  MembershipId:
+    type: string
+    description: The Destiny Membership ID
+    
+  BungieAssetPath:
+    type: string
+    description: the relative path to an asset on www.bungie.net
+  
+  CharacterStat:
+    properties:
+      maximumValue:
+        type: integer
+      statHash:
+        type: integer
+      value:
+        type: integer
+        
+  Character:
+    properties:
+      backgroundPath:
+        $ref: "#/definitions/BungieAssetPath"
+      baseCharacterLevel:
+        type: integer
+      characterBase:
+        properties:
+          buildStatGroupHash:
+            type: integer
+          characterId:
+            type: integer
+          classHash:
+            type: integer
+          classType:
+            type: integer
+          currentActivityHash:
+            type: integer
+          customization:
+            properties:
+              decalColor:
+                type: integer
+              decalIndex:
+                type: integer
+              eyeColor:
+                type: integer
+              face:
+                type: integer
+              featureColor:
+                type: integer
+              featureIndex:
+                type: integer
+              hairColor:
+                type: integer
+              hairIndex:
+                type: integer
+              lipColor:
+                type: integer
+              personality:
+                type: integer
+              skinColor:
+                type: integer
+              wearHelmet:
+                type: boolean
+          dateLastPlayed:
+            type: string
+            format: date-time
+          genderType:
+            type: integer
+            enum: [0, 1]
+            description: Male (0) or Female (1)
+          genderHash:
+            type: integer
+          grimoireScore:
+            type: integer
+          lastCompletedStoryHash:
+            type: integer
+          membershipId:
+            $ref: "#/definitions/MembershipId"
+          membershipType:
+            $ref: "#/definitions/MembershipType"
+          minutesPlayedThisSession:
+            type: integer
+          minutesPlayedTotal:
+            type: integer
+          peerView:
+            properties:
+              equipment:
+                type: array
+                items: 
+                  properties:
+                    dyes:
+                      type: array
+                      items:
+                        properties:
+                          channelHash:
+                            type: integer
+                          dyeHash:
+                            type: integer
+                    itemHash:
+                      type: integer
+          powerLevel:
+            type: integer
+            minimum: 0
+            maximum: 400
+          raceHash:
+            type: integer
+          stats:
+            properties:
+              STAT_AGILITY:
+                $ref: "#/definitions/CharacterStat"
+              STAT_ARMOR:
+                $ref: "#/definitions/CharacterStat" 
+              STAT_ATTACK_EFFICIENCY:
+                $ref: "#/definitions/CharacterStat"
+              STAT_ATTACK_ENERGY:
+                $ref: "#/definitions/CharacterStat"   
+              STAT_ATTACK_SPEED:
+                $ref: "#/definitions/CharacterStat"
+              STAT_DAMAGE_REDUCTION:
+                $ref: "#/definitions/CharacterStat" 
+              STAT_DEFENSE:
+                $ref: "#/definitions/CharacterStat"
+              STAT_DISCIPLINE:
+                $ref: "#/definitions/CharacterStat" 
+              STAT_INTELLECT:
+                $ref: "#/definitions/CharacterStat"   
+              STAT_LIGHT:
+                $ref: "#/definitions/CharacterStat"
+              STAT_OPTICS:
+                $ref: "#/definitions/CharacterStat" 
+              STAT_RECOVERY:
+                $ref: "#/definitions/CharacterStat" 
+              STAT_STRENGTH:
+                $ref: "#/definitions/CharacterStat"
+      characterLevel:
+        type: integer
+      emblemHash:
+        type: integer
+      emblemPath:
+        $ref: "#/definitions/BungieAssetPath"
+      isPrestigeLevel:
+        type: boolean
+      levelProgression:
+        properties:
+          currentProgress:
+            type: integer
+          dailyProgress:
+            type: integer
+          level:
+            type: integer
+          nextLevelAt:
+            type: integer
+          progressionHash:
+            type: integer
+          progressToNextLevel:
+            type: integer
+          step: 
+            type: integer
+          weeklyProgress:
+            type: integer
+      percentToNextLevel:
+        type: integer
 paths:
 
   /Destiny/{membershipType}/Account/{destinyMembershipId}/Summary/:
 
     get:
-
       description: |
         Returns Destiny account information for the supplied membership.
 
@@ -58,22 +266,17 @@ paths:
         - $ref: "#/parameters/BungieNetApiKey"
         - $ref: "#/parameters/MembershipType"
         - $ref: "#/parameters/GetDefinitions"
-        -
-          name: destinyMembershipId
-          in: path
-          description: A valid Destiny Membership Id.
-          required: true
-          type: number
+        - $ref: "#/parameters/DestinyMembershipId"
           
       # Expected responses for this operation:
       responses:
         # Response code
         200:
           description: Successful response
-          # A schema describing your response object.
-          # Use JSON Schema format
+          schema: 
+              $ref: '#/definitions/DestinyAccountResponse'
           
-  /SearchDestinyPlayer/{membershipType}/{username}/:
+  /Destiny/SearchDestinyPlayer/{membershipType}/{username}/:
     get:
       description: Search for a player
       parameters:
@@ -91,7 +294,23 @@ paths:
           schema:
                 $ref: '#/definitions/PlayerSearchResponse'
 
-
+  /Destiny/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/:
+    get:
+      description: Get a character summary
+  
+      parameters:
+        - $ref: "#/parameters/BungieNetApiKey"
+        - $ref: "#/parameters/MembershipType"
+        - $ref: "#/parameters/GetDefinitions"
+        - $ref: "#/parameters/DestinyMembershipId"
+        - $ref: "#/parameters/CharacterId"
+        
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/GetCharacterSummaryResponse'
+        
 parameters:
   BungieNetApiKey:
     name: x-api-key
@@ -114,3 +333,18 @@ parameters:
     in: query
     description: Include definitions, use for debugging. 
     type: boolean
+  
+  DestinyMembershipId:
+    name: destinyMembershipId
+    in: path
+    description: A valid Destiny Membership Id.
+    required: true
+    type: number
+
+  CharacterId:
+    name: characterId
+    in: path
+    description: A valid character Id.
+    required: true
+    type: number
+    
