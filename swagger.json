@@ -95,6 +95,31 @@
         }
       }
     },
+    "DestinyItemsResponse" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/BungieResponseBoilerplate"
+      }, {
+        "properties" : {
+          "Response" : {
+            "$ref" : "#/definitions/DestinyItemsResult"
+          }
+        }
+      } ]
+    },
+    "DestinyItemsResult" : {
+      "properties" : {
+        "data" : {
+          "properties" : {
+            "characters" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Character"
+              }
+            }
+          }
+        }
+      }
+    },
     "GetCharacterSummaryResponse" : {
       "allOf" : [ {
         "$ref" : "#/definitions/BungieResponseBoilerplate"
@@ -445,6 +470,29 @@
             "description" : "Successful response",
             "schema" : {
               "$ref" : "#/definitions/GetCharacterSummaryResponse"
+            }
+          }
+        }
+      }
+    },
+    "/Destiny/{membershipType}/Account/{destinyMembershipId}/Items/" : {
+      "get" : {
+        "tags" : [ "DestinyService" ],
+        "description" : "Returns Destiny account information for the supplied membership.\n",
+        "parameters" : [ {
+          "$ref" : "#/parameters/BungieNetApiKey"
+        }, {
+          "$ref" : "#/parameters/MembershipType"
+        }, {
+          "$ref" : "#/parameters/DestinyMembershipId"
+        }, {
+          "$ref" : "#/parameters/GetDefinitions"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/DestinyItemsResponse"
             }
           }
         }
