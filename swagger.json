@@ -399,6 +399,13 @@
           "type" : "integer"
         }
       }
+    },
+    "Item" : {
+      "properties" : {
+        "bucketHash" : {
+          "type" : "integer"
+        }
+      }
     }
   },
   "paths" : {
