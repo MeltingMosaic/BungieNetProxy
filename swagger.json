@@ -404,6 +404,33 @@
       "properties" : {
         "bucketHash" : {
           "type" : "integer"
+        },
+        "characterIndex" : {
+          "type" : "integer"
+        },
+        "damageType" : {
+          "type" : "integer"
+        },
+        "damageTypeHash" : {
+          "type" : "integer"
+        },
+        "isGridComplete" : {
+          "type" : "integer"
+        },
+        "itemHash" : {
+          "type" : "integer"
+        },
+        "itemId" : {
+          "type" : "integer"
+        },
+        "quantity" : {
+          "type" : "integer"
+        },
+        "state" : {
+          "type" : "integer"
+        },
+        "transferStatus" : {
+          "type" : "integer"
         }
       }
     }
