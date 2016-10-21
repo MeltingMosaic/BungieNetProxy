@@ -423,6 +423,19 @@
         "itemId" : {
           "type" : "integer"
         },
+        "primaryStat" : {
+          "properties" : {
+            "maximumValue" : {
+              "type" : "integer"
+            },
+            "statHash" : {
+              "type" : "integer"
+            },
+            "value" : {
+              "type" : "integer"
+            }
+          }
+        },
         "quantity" : {
           "type" : "integer"
         },
