@@ -115,6 +115,9 @@
               "items" : {
                 "$ref" : "#/definitions/Character"
               }
+            },
+            "items" : {
+              "$ref" : "#/definitions/ItemArray"
             }
           }
         }
@@ -445,6 +448,12 @@
         "transferStatus" : {
           "type" : "integer"
         }
+      }
+    },
+    "ItemArray" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Item"
       }
     }
   },
