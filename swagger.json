@@ -618,14 +618,14 @@
       "in" : "path",
       "description" : "A valid Destiny Membership Id.",
       "required" : true,
-      "type" : "number"
+      "type" : "integer"
     },
     "CharacterId" : {
       "name" : "characterId",
       "in" : "path",
       "description" : "A valid character Id.",
       "required" : true,
-      "type" : "number"
+      "type" : "integer"
     },
     "Count" : {
       "name" : "count",
