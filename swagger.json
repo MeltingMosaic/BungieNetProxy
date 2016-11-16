@@ -209,7 +209,8 @@
               "type" : "integer"
             },
             "classType" : {
-              "type" : "integer"
+              "type" : "integer",
+              "description" : "Titan (0), Hunter (1), or Warlock (2)"
             },
             "currentActivityHash" : {
               "type" : "integer"
