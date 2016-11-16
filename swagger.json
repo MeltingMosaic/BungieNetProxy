@@ -632,14 +632,15 @@
       "in" : "query",
       "description" : "The number of items to request",
       "required" : false,
-      "type" : "number"
+      "type" : "integer",
+      "minimum" : 1
     },
     "Page" : {
       "name" : "page",
       "in" : "query",
       "description" : "The page of data to get. Starts at 1",
       "required" : false,
-      "type" : "number",
+      "type" : "integer",
       "minimum" : 1
     },
     "ActivityMode" : {
