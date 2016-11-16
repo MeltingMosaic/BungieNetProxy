@@ -574,6 +574,10 @@
           "$ref" : "#/parameters/CharacterId"
         }, {
           "$ref" : "#/parameters/ActivityMode"
+        }, {
+          "$ref" : "#/parameters/Count"
+        }, {
+          "$ref" : "#/parameters/Page"
         } ],
         "responses" : {
           "200" : {
@@ -622,6 +626,21 @@
       "description" : "A valid character Id.",
       "required" : true,
       "type" : "number"
+    },
+    "Count" : {
+      "name" : "count",
+      "in" : "query",
+      "description" : "The number of items to request",
+      "required" : false,
+      "type" : "number"
+    },
+    "Page" : {
+      "name" : "page",
+      "in" : "query",
+      "description" : "The page of data to get. Starts at 1",
+      "required" : false,
+      "type" : "number",
+      "minimum" : 1
     },
     "ActivityMode" : {
       "name" : "mode",
