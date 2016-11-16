@@ -553,6 +553,26 @@
           }
         }
       }
+    },
+    "/Destiny/Stats/ActivityHistory/{membershipType}/{destinyMembershipId}/{characterId}/" : {
+      "get" : {
+        "tags" : [ "DestinyService" ],
+        "description" : "Returns recent activity history for a given character.\n",
+        "parameters" : [ {
+          "$ref" : "#/parameters/BungieNetApiKey"
+        }, {
+          "$ref" : "#/parameters/MembershipType"
+        }, {
+          "$ref" : "#/parameters/DestinyMembershipId"
+        }, {
+          "$ref" : "#/parameters/CharacterId"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response"
+          }
+        }
+      }
     }
   },
   "parameters" : {
