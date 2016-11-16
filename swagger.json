@@ -571,6 +571,8 @@
           "$ref" : "#/parameters/DestinyMembershipId"
         }, {
           "$ref" : "#/parameters/CharacterId"
+        }, {
+          "$ref" : "#/parameters/ActivityMode"
         } ],
         "responses" : {
           "200" : {
@@ -619,6 +621,14 @@
       "description" : "A valid character Id.",
       "required" : true,
       "type" : "number"
+    },
+    "ActivityMode" : {
+      "name" : "mode",
+      "in" : "query",
+      "description" : "The type of activity",
+      "required" : true,
+      "type" : "string",
+      "enum" : [ "None", "Story", "Strike", "Raid", "AllPvP", "Patrol", "AllPvE", "PvPIntroduction", "ThreeVsThree", "Control", "Lockdown", "Team", "FreeForAll", "TrialsOfOsiris", "Doubles", "Nightfall", "Heroic", "AllStrikes", "IronBanner", "AllArena", "Arena", "ArenaChallenge", "Elimination", "Rift", "AllMayhem", "MayhemClash", "MayhemRumble", "ZoneControl", "Racing", "ArenaElderChallenge", "Supremacy", "PrivateMatchesAll" ]
     }
   }
 }
