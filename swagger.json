@@ -138,6 +138,11 @@
         }
       } ]
     },
+    "GetStatsResponse" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/BungieResponseBoilerplate"
+      } ]
+    },
     "BungieResponseBoilerplate" : {
       "properties" : {
         "ErrorCode" : {
@@ -569,7 +574,10 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Successful Response"
+            "description" : "Successful Response",
+            "schema" : {
+              "$ref" : "#/definitions/GetStatsResponse"
+            }
           }
         }
       }
