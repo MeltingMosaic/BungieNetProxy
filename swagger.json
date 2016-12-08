@@ -143,6 +143,11 @@
         "$ref" : "#/definitions/BungieResponseBoilerplate"
       } ]
     },
+    "AccessTokenFromCodeResponse" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/BungieResponseBoilerplate"
+      } ]
+    },
     "BungieResponseBoilerplate" : {
       "properties" : {
         "ErrorCode" : {
@@ -584,6 +589,23 @@
             "description" : "Successful Response",
             "schema" : {
               "$ref" : "#/definitions/GetStatsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/App/GetAccessTokensFromCode/" : {
+      "post" : {
+        "tags" : [ "AppService" ],
+        "description" : "Exchanges an auth code for an access token and refresh token",
+        "parameters" : [ {
+          "$ref" : "#parameters/BungieNetApiKey"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "schema" : {
+              "$ref" : "#/definitions/AccessTokenFromCodeResponse"
             }
           }
         }
