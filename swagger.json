@@ -158,7 +158,7 @@
               },
               "scope" : {
                 "type" : "integer",
-                "description" : "Scopes flags. Read basic info (1), Move or Equip Destiny Items (32), Read Destiny inventory and vault (64), Read user data (128), Read Destiny vendors and advisors (256)"
+                "description" : "Permission flags. Read basic info (1), Move or Equip Destiny Items (32), Read Destiny inventory and vault (64), Read user data (128), Read Destiny vendors and advisors (512)"
               }
             }
           }
@@ -633,6 +633,18 @@
         "description" : "Exchanges an auth code for an access token and refresh token",
         "parameters" : [ {
           "$ref" : "#parameters/BungieNetApiKey"
+        }, {
+          "name" : "authCode",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "properties" : {
+              "code" : {
+                "type" : "string",
+                "description" : "Code passed back from authorization"
+              }
+            }
+          }
         } ],
         "responses" : {
           "200" : {
