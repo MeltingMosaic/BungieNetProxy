@@ -157,7 +157,8 @@
                 "$ref" : "#/definitions/AccessToken"
               },
               "scope" : {
-                "type" : "integer"
+                "type" : "integer",
+                "description" : "Scopes flags. Read basic info (1), Move or Equip Destiny Items (32), Read Destiny inventory and vault (64), Read user data (128), Read Destiny vendors and advisors (256)"
               }
             }
           }
