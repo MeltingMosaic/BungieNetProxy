@@ -642,13 +642,16 @@
           "schema" : {
             "properties" : {
               "membershipType" : {
-                "type" : "string"
+                "type" : "string",
+                "required" : true
               },
               "itemId" : {
-                "type" : "integer"
+                "type" : "integer",
+                "required" : true
               },
               "characterId" : {
-                "type" : "integer"
+                "type" : "integer",
+                "required" : true
               }
             }
           }
@@ -677,6 +680,7 @@
             "properties" : {
               "code" : {
                 "type" : "string",
+                "required" : true,
                 "description" : "Code passed back from authorization"
               }
             }
@@ -706,6 +710,7 @@
             "properties" : {
               "refreshToken" : {
                 "type" : "string",
+                "required" : true,
                 "description" : "The refresh token from previous token exchange"
               }
             }
