@@ -147,16 +147,19 @@
       "allOf" : [ {
         "$ref" : "#/definitions/BungieResponseBoilerplate"
       }, {
-        "properties" : "",
-        "Response" : {
-          "accessToken" : {
-            "$ref" : "#/definitions/AccessToken"
-          },
-          "refreshToken" : {
-            "$ref" : "#/definitions/AccessToken"
-          },
-          "scope" : {
-            "type" : "integer"
+        "properties" : {
+          "Response" : {
+            "properties" : {
+              "accessToken" : {
+                "$ref" : "#/definitions/AccessToken"
+              },
+              "refreshToken" : {
+                "$ref" : "#/definitions/AccessToken"
+              },
+              "scope" : {
+                "type" : "integer"
+              }
+            }
           }
         }
       } ]
