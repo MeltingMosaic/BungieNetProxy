@@ -146,7 +146,36 @@
     "AccessTokenFromCodeResponse" : {
       "allOf" : [ {
         "$ref" : "#/definitions/BungieResponseBoilerplate"
+      }, {
+        "properties" : "",
+        "Response" : {
+          "accessToken" : {
+            "$ref" : "#/definitions/AccessToken"
+          },
+          "refreshToken" : {
+            "$ref" : "#/definitions/AccessToken"
+          },
+          "scope" : {
+            "type" : "integer"
+          }
+        }
       } ]
+    },
+    "AccessToken" : {
+      "properties" : {
+        "value" : {
+          "type" : "string",
+          "description" : "The access token"
+        },
+        "readyIn" : {
+          "type" : "integer",
+          "description" : "The number of seconds before this token becomes valid"
+        },
+        "expires" : {
+          "type" : "integer",
+          "description" : "THe number of seconds before this token becomes invalid"
+        }
+      }
     },
     "BungieResponseBoilerplate" : {
       "properties" : {
