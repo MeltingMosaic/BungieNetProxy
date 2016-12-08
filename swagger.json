@@ -638,6 +638,7 @@
         }, {
           "name" : "EquipBody",
           "in" : "body",
+          "required" : true,
           "schema" : {
             "properties" : {
               "membershipType" : {
