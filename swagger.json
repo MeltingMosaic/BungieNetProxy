@@ -677,7 +677,6 @@
             "properties" : {
               "code" : {
                 "type" : "string",
-                "required" : true,
                 "description" : "Code passed back from authorization"
               }
             }
@@ -707,7 +706,6 @@
             "properties" : {
               "refreshToken" : {
                 "type" : "string",
-                "required" : true,
                 "description" : "The refresh token from previous token exchange"
               }
             }
