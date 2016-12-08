@@ -171,7 +171,7 @@
           "type" : "string",
           "description" : "The access token"
         },
-        "readyIn" : {
+        "readyin" : {
           "type" : "integer",
           "description" : "The number of seconds before this token becomes valid"
         },
