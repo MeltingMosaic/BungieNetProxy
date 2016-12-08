@@ -627,6 +627,41 @@
         }
       }
     },
+    "/Destiny/EquipItem/" : {
+      "post" : {
+        "tags" : [ "DestinyService" ],
+        "description" : "Equips an inventory item",
+        "parameters" : [ {
+          "$ref" : "#/parameters/BungieNetApiKey"
+        }, {
+          "$ref" : "#/parameters/OAuthAuthorization"
+        }, {
+          "name" : "EquipBody",
+          "in" : "body",
+          "schema" : {
+            "properties" : {
+              "membershipType" : {
+                "type" : "string"
+              },
+              "itemId" : {
+                "type" : "integer"
+              },
+              "characterId" : {
+                "type" : "integer"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "schema" : {
+              "$ref" : "#/definitions/BungieResponseBoilerplate"
+            }
+          }
+        }
+      }
+    },
     "/App/GetAccessTokensFromCode/" : {
       "post" : {
         "tags" : [ "AppService" ],
@@ -691,6 +726,13 @@
       "name" : "x-api-key",
       "in" : "header",
       "description" : "BungieNet API Key",
+      "required" : true,
+      "type" : "string"
+    },
+    "OAuthAuthorization" : {
+      "name" : "Authorization",
+      "in" : "header",
+      "description" : "OAuth 2 token",
       "required" : true,
       "type" : "string"
     },
