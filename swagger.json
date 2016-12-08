@@ -642,16 +642,13 @@
           "schema" : {
             "properties" : {
               "membershipType" : {
-                "type" : "string",
-                "required" : true
+                "type" : "string"
               },
               "itemId" : {
-                "type" : "integer",
-                "required" : true
+                "type" : "integer"
               },
               "characterId" : {
-                "type" : "integer",
-                "required" : true
+                "type" : "integer"
               }
             }
           }
