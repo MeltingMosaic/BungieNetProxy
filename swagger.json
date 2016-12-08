@@ -645,10 +645,10 @@
                 "type" : "string"
               },
               "itemId" : {
-                "type" : "integer"
+                "type" : "string"
               },
               "characterId" : {
-                "type" : "integer"
+                "type" : "string"
               }
             }
           }
