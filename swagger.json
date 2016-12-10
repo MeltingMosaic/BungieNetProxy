@@ -630,6 +630,42 @@
     "/Destiny/EquipItem/" : {
       "post" : {
         "tags" : [ "DestinyService" ],
+        "description" : "Equips an inventory item",
+        "parameters" : [ {
+          "$ref" : "#/parameters/BungieNetApiKey"
+        }, {
+          "$ref" : "#/parameters/OAuthAuthorization"
+        }, {
+          "name" : "EquipBody",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "properties" : {
+              "membershipType" : {
+                "type" : "string"
+              },
+              "itemId" : {
+                "type" : "integer"
+              },
+              "characterId" : {
+                "type" : "integer"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "schema" : {
+              "$ref" : "#/definitions/BungieResponseBoilerplate"
+            }
+          }
+        }
+      }
+    },
+    "/Destiny/TransferItem/" : {
+      "post" : {
+        "tags" : [ "DestinyService" ],
         "description" : "Transfers an inventory item",
         "parameters" : [ {
           "$ref" : "#/parameters/BungieNetApiKey"
@@ -673,8 +709,7 @@
             }
           }
         }
-      },
-      "/Destiny/TransferItem/" : ""
+      }
     },
     "/App/GetAccessTokensFromCode/" : {
       "post" : {
