@@ -6,7 +6,7 @@
   },
   "schemes" : [ "https" ],
   "basePath" : "/Platform",
-  "host" : "www.bungie.net",
+  "host" : "bungie.net",
   "definitions" : {
     "PlayerSearchResult" : {
       "properties" : {
@@ -645,10 +645,10 @@
                 "type" : "string"
               },
               "itemId" : {
-                "type" : "string"
+                "type" : "integer"
               },
               "characterId" : {
-                "type" : "string"
+                "type" : "integer"
               }
             }
           }
@@ -668,7 +668,7 @@
         "tags" : [ "AppService" ],
         "description" : "Exchanges an auth code for an access token and refresh token",
         "parameters" : [ {
-          "$ref" : "#parameters/BungieNetApiKey"
+          "$ref" : "#/parameters/BungieNetApiKey"
         }, {
           "name" : "authCode",
           "in" : "body",
@@ -697,7 +697,7 @@
         "tags" : [ "AppService" ],
         "description" : "Exchanges a refresh token for a new access token and refresh token",
         "parameters" : [ {
-          "$ref" : "#parameters/BungieNetApiKey"
+          "$ref" : "#/parameters/BungieNetApiKey"
         }, {
           "name" : "refreshToken",
           "in" : "body",
