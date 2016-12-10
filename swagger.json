@@ -630,25 +630,37 @@
     "/Destiny/EquipItem/" : {
       "post" : {
         "tags" : [ "DestinyService" ],
-        "description" : "Equips an inventory item",
+        "description" : "Transfers an inventory item",
         "parameters" : [ {
           "$ref" : "#/parameters/BungieNetApiKey"
         }, {
           "$ref" : "#/parameters/OAuthAuthorization"
         }, {
-          "name" : "EquipBody",
+          "name" : "TransferBody",
           "in" : "body",
           "required" : true,
           "schema" : {
             "properties" : {
               "membershipType" : {
-                "type" : "string"
+                "type" : "integer"
+              },
+              "itemReferenceHash" : {
+                "type" : "string",
+                "description" : "the inventoryItemHash of an item"
               },
               "itemId" : {
-                "type" : "integer"
+                "type" : "string",
+                "description" : "The itemId of an equippable item, otherwise 0"
+              },
+              "stackSize" : {
+                "type" : "integer",
+                "description" : "The number of items to transfer, must be 1 for equippable items"
               },
               "characterId" : {
-                "type" : "integer"
+                "type" : "string"
+              },
+              "transferToVault" : {
+                "type" : "boolean"
               }
             }
           }
@@ -661,7 +673,8 @@
             }
           }
         }
-      }
+      },
+      "/Destiny/TransferItem/" : ""
     },
     "/App/GetAccessTokensFromCode/" : {
       "post" : {
