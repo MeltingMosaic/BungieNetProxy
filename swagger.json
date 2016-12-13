@@ -6,7 +6,7 @@
   },
   "schemes" : [ "https" ],
   "basePath" : "/Platform",
-  "host" : "bungie.net",
+  "host" : "www.bungie.net",
   "definitions" : {
     "PlayerSearchResult" : {
       "properties" : {
