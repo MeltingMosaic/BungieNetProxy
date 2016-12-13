@@ -677,6 +677,7 @@
           "in" : "body",
           "required" : true,
           "schema" : {
+            "required" : [ "membershipType", "itemReferenceHash", "itemId", "stackSize", "characterId", "transferToVault" ],
             "properties" : {
               "membershipType" : {
                 "type" : "integer"
