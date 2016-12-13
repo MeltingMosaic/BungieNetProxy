@@ -640,6 +640,7 @@
           "in" : "body",
           "required" : true,
           "schema" : {
+            "required" : [ "membershipType", "itemId", "characterId" ],
             "properties" : {
               "membershipType" : {
                 "type" : "string"
